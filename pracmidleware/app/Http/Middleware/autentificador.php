@@ -18,10 +18,15 @@ class autentificador
     public function handle(Request $request, Closure $next): Response
     {
 
-        if($request->input('contrasena') !== 'mi-contrasena'){
+        if($request->input('contrasena') !== '1234'){
             return redirect('/home');
         }
 
         return $next($request);
+    }
+
+    public function register(): void
+    {
+        $this->app->singleton(autentificador::class);
     }
 }
